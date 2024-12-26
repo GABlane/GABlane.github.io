@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .love-message {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div style="text-align: center; margin-top: 20%;">
+    <h1>Do you love me?</h1>
+    <button id="yesButton">Yes</button>
+    <button id="noButton">No</button>
+</div>
+
+<script>
+    const noButton = document.getElementById('noButton');
+    const yesButton = document.getElementById('yesButton');
+
+    noButton.addEventListener('mouseover', () => {
+        const x = Math.floor(Math.random() * (window.innerWidth - noButton.offsetWidth));
+        const y = Math.floor(Math.random() * (window.innerHeight - noButton.offsetHeight));
+        noButton.style.position = 'absolute';
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+    });
+
+    yesButton.addEventListener('click', () => {
+        document.body.innerHTML = '';
+        for (let i = 0; i < 100; i++) {
+            const message = document.createElement('div');
+            message.className = 'love-message';
+            message.textContent = 'I love you too!';
+            message.style.left = `${Math.random() * window.innerWidth}px`;
+            message.style.top = `${Math.random() * window.innerHeight}px`;
+            document.body.appendChild(message);
+        }
+    });
+</script>
+
+</body>
+
+</html>
